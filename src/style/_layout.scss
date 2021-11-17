@@ -2,6 +2,7 @@
     max-width: 400px;
     margin: 0 auto;
     position: relative;
+    background: $clr-primary;
 }
 .counter {
     display: flex;
@@ -19,12 +20,17 @@
     width: 100px;
     height: 100px;
     padding: 0.5rem;
+    border: 1px solid white;
+    border-radius: 1rem;
+    z-index: -1;
     &.work {
-        right: 100%;
-        top: 0;
+        right: calc(100% - 1rem);
+        top: 2rem;
+        transform: rotate(-30deg);
     }
     &.break {
         left: 100%;
-        top: 0;
+        top: 2rem;
+        transform: rotate(30deg);
     }
 }

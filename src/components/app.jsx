@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {formatTime} from "../modules/time-formatter";
 export function App() {
-    const DEFAULT_TIME = 20;
-    const PAUSE_TIME = 100;
+    const DEFAULT_TIME = 1500;
+    const PAUSE_TIME = 300;
     const STATES = ["idle", "work", "rest"];
 
     const [state, setState] = useState(STATES[0]);
@@ -91,19 +91,16 @@ export function App() {
                     {"RESET"}
                 </button>
             </div>
-            {() => {
-                if (state === "idle") return;
-                if (state === "work")
-                    return (
-                        <div className={"sign work"}>
-                            <p>{"It's working time !"}</p>
-                        </div>
-                    );
-            }}
-
-            <div className={"sign break"}>
-                <p>{"It's break time !"}</p>
-            </div>
+            {state === STATES[1] && (
+                <div className={"sign work"}>
+                    <p>{"It's working time !"}</p>
+                </div>
+            )}
+            {state === STATES[2] && (
+                <div className={"sign break"}>
+                    <p>{"It's break time !"}</p>
+                </div>
+            )}
         </React.Fragment>
     );
 }
