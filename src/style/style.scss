@@ -1,0 +1,24 @@
+@import "reset";
+@import "vars";
+
+@import "normalize";
+@import "layout";
+
+html {
+    font-family: sans-serif;
+    user-select: none;
+}
+body {
+    background: $clr-primary;
+    color: $clr-secondary;
+}
+#app {
+    padding: 1rem;
+    border: 1px solid $clr-secondary;
+}
+.counter {
+    padding-block: 1rem;
+    .time {
+        font-size: 5em;
+    }
+}

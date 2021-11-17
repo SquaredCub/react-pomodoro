@@ -24,6 +24,7 @@
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
     "@becode/eslint-config": "^0.12.1",
+    "@parcel/transformer-sass": "^2.0.1",
     "eslint": "^8.2.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.0",

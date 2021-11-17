@@ -1,0 +1,15 @@
+#app {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
