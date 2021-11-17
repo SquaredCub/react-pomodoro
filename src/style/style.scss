@@ -25,3 +25,8 @@ body {
         font-size: 5em;
     }
 }
+.modal {
+    background: $clr-primary;
+    border: 1px solid $clr-secondary;
+    padding: 1rem;
+}
