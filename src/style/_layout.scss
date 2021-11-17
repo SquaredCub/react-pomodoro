@@ -1,6 +1,7 @@
 #app {
     max-width: 400px;
     margin: 0 auto;
+    position: relative;
 }
 .counter {
     display: flex;
@@ -12,4 +13,18 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
+}
+.sign {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    padding: 0.5rem;
+    &.work {
+        right: 100%;
+        top: 0;
+    }
+    &.break {
+        left: 100%;
+        top: 0;
+    }
 }
