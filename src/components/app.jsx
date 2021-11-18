@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {formatTime} from "../modules/time-formatter";
 import {Modal} from "./modal";
+import {Sign} from "./sign";
+import {Button} from "./button";
 export function App() {
     const DEFAULT_TIME = 1500;
     const PAUSE_TIME = 300;
@@ -83,51 +85,36 @@ export function App() {
             </p>
             <div className={"counter"}>
                 {timer === 0 ? (
-                    <button type={"button"} className={"btn square disabled"}>
-                        {"-"}
-                    </button>
+                    <Button classes={"square disabled"} text={"-"} />
                 ) : (
-                    <button
-                        type={"button"}
-                        className={"btn square"}
-                        onClick={decrement}>
-                        {"-"}
-                    </button>
+                    <Button
+                        classes={"square"}
+                        text={"-"}
+                        handleClick={decrement}
+                    />
                 )}
                 <h2 className={"time"}>{time}</h2>
-                <button
-                    type={"button"}
-                    className={"btn square"}
-                    onClick={increment}>
-                    {"+"}
-                </button>
+                <Button classes={"square"} text={"+"} />
             </div>
             <div className={"controls"}>
                 {timer === 0 ? (
-                    <button className={"btn disabled"} type={"button"}>
-                        {isRunning ? "PAUSE" : "START"}
-                    </button>
+                    <Button
+                        classes={"disabled"}
+                        text={isRunning ? "PAUSE" : "START"}
+                    />
                 ) : (
-                    <button
-                        className={"btn"}
-                        type={"button"}
-                        onClick={toggleRunning}>
-                        {isRunning ? "PAUSE" : "START"}
-                    </button>
+                    <Button
+                        text={isRunning ? "PAUSE" : "START"}
+                        handleClick={toggleRunning}
+                    />
                 )}
-                <button className={"btn"} type={"button"} onClick={resetTimer}>
-                    {"RESET"}
-                </button>
+                <Button handleClick={resetTimer} text={"RESET"} />
             </div>
             {state === STATES[1] && (
-                <div className={"sign work"}>
-                    <p>{"It's working time !"}</p>
-                </div>
+                <Sign type={"work"} text={"It's work time !"} />
             )}
             {state === STATES[2] && (
-                <div className={"sign break"}>
-                    <p>{"It's break time !"}</p>
-                </div>
+                <Sign type={"break"} text={"It's break time !"} />
             )}
             {modal === true && (
                 <Modal

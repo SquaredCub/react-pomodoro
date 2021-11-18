@@ -2,7 +2,6 @@
   "name": "new-folder",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "babel": {
     "presets": [
       "@babel/preset-react",
