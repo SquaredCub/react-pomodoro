@@ -1,11 +1,9 @@
 import React from "react";
-function Button({handleClick, text, classes}) {
-    let classNames = `btn ${classes}`;
+export const Button = ({handleClick, text, classes}) => {
+    const classNames = `btn ${classes}`;
     return (
-        <button type={"button"} className={classNames}>
+        <button type={"button"} className={classNames} onClick={handleClick}>
             {text}
         </button>
     );
-}
-
-export default Button;
+};

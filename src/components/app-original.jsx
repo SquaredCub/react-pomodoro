@@ -3,6 +3,7 @@ import {formatTime} from "../modules/time-formatter";
 import {Modal} from "./modal";
 import {Sign} from "./sign";
 import {Button} from "./button";
+
 export function App() {
     const DEFAULT_TIME = 1500;
     const PAUSE_TIME = 300;
@@ -17,10 +18,10 @@ export function App() {
     const [modal, setModal] = useState(false);
 
     const decrement = () => {
-        setTimer((timer) => timer - 1);
+        setTimer((timer) => timer - 60);
     };
     const increment = () => {
-        setTimer((timer) => timer + 1);
+        setTimer((timer) => timer + 60);
     };
     const closeModal = () => {
         setModal(false);
@@ -61,10 +62,10 @@ export function App() {
     };
     useEffect(() => {
         setTime(formatTime(timer));
-        if (timer !== 0) {
+        if (timer > 0) {
             return;
         }
-
+        setTimer(0);
         setModal(true);
         setIsRunning(false);
     }, [timer]);
@@ -94,7 +95,7 @@ export function App() {
                     />
                 )}
                 <h2 className={"time"}>{time}</h2>
-                <Button classes={"square"} text={"+"} />
+                <Button classes={"square"} text={"+"} handleClick={increment} />
             </div>
             <div className={"controls"}>
                 {timer === 0 ? (
