@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import {formatTime} from "../modules/time-formatter";
 import {Modal} from "./modal";
 import {Sign} from "./sign";
@@ -16,6 +16,17 @@ export function App() {
     const [isRunning, setIsRunning] = useState(false);
     const [intervalID, setIntervalID] = useState(0);
     const [modal, setModal] = useState(false);
+
+    const pop = useRef();
+    const playSound = () => {
+        pop.current.currentTime = 0;
+        pop.current.play();
+    };
+    const pause = useRef();
+    const playPause = () => {
+        pause.current.currentTime = 0;
+        pause.current.play();
+    };
 
     const decrement = () => {
         setTimer((timer) => timer - 60);
@@ -68,6 +79,7 @@ export function App() {
         setTimer(0);
         setModal(true);
         setIsRunning(false);
+        playPause();
     }, [timer]);
     useEffect(() => {
         if (isRunning) {
@@ -92,10 +104,16 @@ export function App() {
                         classes={"square"}
                         text={"-"}
                         handleClick={decrement}
+                        sound={playSound}
                     />
                 )}
                 <h2 className={"time"}>{time}</h2>
-                <Button classes={"square"} text={"+"} handleClick={increment} />
+                <Button
+                    classes={"square"}
+                    text={"+"}
+                    handleClick={increment}
+                    sound={playSound}
+                />
             </div>
             <div className={"controls"}>
                 {timer === 0 ? (
@@ -107,9 +125,14 @@ export function App() {
                     <Button
                         text={isRunning ? "PAUSE" : "START"}
                         handleClick={toggleRunning}
+                        sound={playSound}
                     />
                 )}
-                <Button handleClick={resetTimer} text={"RESET"} />
+                <Button
+                    handleClick={resetTimer}
+                    text={"RESET"}
+                    sound={playSound}
+                />
             </div>
             {state === STATES[1] && (
                 <Sign type={"work"} text={"It's work time !"} />
@@ -122,8 +145,13 @@ export function App() {
                     handleClose={closeModal}
                     handleContinue={handleContinue}
                     lastState={lastState}
+                    sound={playSound}
                 />
             )}
+            <div className={"audio"}>
+                <audio src={"/pop.wav"} id={"pop"} ref={pop} />
+                <audio src={"/pause.mp3"} id={"pause"} ref={pause} />
+            </div>
         </React.Fragment>
     );
 }
